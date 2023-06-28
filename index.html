@@ -1,89 +1,51 @@
-<table>
-  <caption>Найпопулярніші рок групи світу</caption>
-  <thead>
-    <tr>
-      <th scope="col">Група</th>
-      <th scope="col">Рік заснування</th>
-      <th scope="col">Кількість альбомів</th>
-      <th scope="col">Найпопулярніша пісня</th>
-    </tr>
-    <style>
-        th{
-            border: 2px;
-            border-style: double;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Аркуш з візитними картками</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function createBusinessCards() {
+      var data = [];
+      for (var i = 1; i <= 12; i++) {
+        var name = prompt('Введіть ваше ім\'я:');
+        var profession = prompt('Введіть вашу професію:');
+        var phone = prompt('Введіть ваш номер телефону:');
+        data.push([name, profession, phone]);
+      }
+      generateTable(data);
+    }
+    
+    function generateTable(data) {
+      var table = document.createElement('table');
+      var header = table.createTHead();
+      var row = header.insertRow();
+      row.insertCell().appendChild(document.createTextNode('Ім\'я'));
+      row.insertCell().appendChild(document.createTextNode('Професія'));
+      row.insertCell().appendChild(document.createTextNode('Телефон'));
+
+      for (var i = 0; i < data.length; i++) {
+        var rowData = data[i];
+        var row = table.insertRow();
+        for (var j = 0; j < rowData.length; j++) {
+          row.insertCell().appendChild(document.createTextNode(rowData[j]));
         }
-        td{
-            border: 2px;
-            border-style: double;
-        }
-    </style>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">AC/DC</th>
-      <td>1973</td>
-      <td>17</td>
-      <td>Highway to hell</td>
-    </tr>
-    <tr>
-      <th scope="row">The Beatles</th>
-      <td>1960</td>
-      <td>13</td>
-      <td>Here Comes The Sun - Remastered 2009</td>
-    </tr>
-    <tr>
-      <th scope="row">Aerosmith</th>
-      <td>1970</td>
-      <td>55</td>
-      <td>Dream on</td>
-    </tr>
-    <tr>
-      <th scope="row">Mettalica</th>
-      <td>1980</td>
-      <td>14</td>
-      <td>Enter SandMan</td>
-    </tr>
-    <tr>
-      <th scope="row">The Rolling Stones</th>
-      <td>1962</td>
-      <td>29</td>
-      <td>Paint it, Black</td>
-    </tr>
-    <tr>
-      <th scope="row">U2</th>
-      <td>1976</td>
-      <td>13</td>
-      <td>With or Without you - Remastered</td>
-    </tr>
-    <tr>
-      <th scope="row">Pink Floyd</th>
-      <td>1965</td>
-      <td>15</td>
-      <td>Another brick in the wall, Pt.2 - 2011 Remastered Version</td>
-    </tr>
-    <tr>
-      <th scope="row">Led Zeppelin</th>
-      <td>1968</td>
-      <td>9</td>
-      <td>Staiway to Heaven - Remaster</td>
-    </tr>
-    <tr>
-      <th scope="row">Queen</th>
-      <td>1971</td>
-      <td>18</td>
-      <td>Bohemian Rhapsody - Remastered 2011</td>
-    </tr>
-    <tr>
-      <th scope="row">Eagles</th>
-      <td>1971</td>
-      <td>12</td>
-      <td>Hotel California - 2013 Remaster</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th scope="row" colspan="2">Загальна кількість альбомів</th>
-      <td colspan="2">195</td>
-    </tr>
-  </tfoot>
-</table>
+      }
+
+      document.body.appendChild(table);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="createBusinessCards()">Створити візитні картки</button>
+</body>
+</html>
