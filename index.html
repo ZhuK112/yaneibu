@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Аркуш з візитними картками</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-  </style>
-  <script>
-    function createBusinessCards() {
-      var data = [];
-      for (var i = 1; i <= 12; i++) {
-        var name = prompt('Введіть ваше ім\'я:');
-        var profession = prompt('Введіть вашу професію:');
-        var phone = prompt('Введіть ваш номер телефону:');
-        data.push([name, profession, phone]);
-      }
-      generateTable(data);
-    }
-    
-    function generateTable(data) {
-      var table = document.createElement('table');
-      var header = table.createTHead();
-      var row = header.insertRow();
-      row.insertCell().appendChild(document.createTextNode('Ім\'я'));
-      row.insertCell().appendChild(document.createTextNode('Професія'));
-      row.insertCell().appendChild(document.createTextNode('Телефон'));
-
-      for (var i = 0; i < data.length; i++) {
-        var rowData = data[i];
-        var row = table.insertRow();
-        for (var j = 0; j < rowData.length; j++) {
-          row.insertCell().appendChild(document.createTextNode(rowData[j]));
-        }
-      }
-
-      document.body.appendChild(table);
-    }
-  </script>
+  <title>JavaScript-сценарій</title>
 </head>
 <body>
-  <button onclick="createBusinessCards()">Створити візитні картки</button>
+  <script>
+    var name = prompt('Input name',''); 
+    var position = prompt('Input position','');
+var phone = prompt('Input phone','');
+var visitcard = ' <TABLE width="100%" border="0">' 
+  +' <TR>'
++' <TD align="CENTER" valign="CENTER">'
++' <IMG src="images/visit_card.gif">'
++' </TD>'
++' <TD align="CENTER">'
++' <B>' + name + '</B><BR>'
++' <I>' + position + '</I><BR>'
++' <FONT color="blue">' + phone + '</FONT>'
++' </TD>'
++' </TR>'
++' </TABLE>'; 
+document.write('<TABLE width="100%" border="0" align="CENTER">');
+for(var y=0; y<12; y++)
+{
+document.write('<TR>');
+for(var x=0; x<3; x++)
+{
+document.write( '<TD align="CENTER" style="border-style: dashed; borderwidth:thin;">');
+document.write( visitcard );
+document.write('</TD>');
+}
+document.write('</TR>');
+}
+document.write('</TABLE>');
+  </script>
 </body>
 </html>
